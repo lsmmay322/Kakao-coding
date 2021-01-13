@@ -34,14 +34,16 @@ string solution(int n, int t, int m, int p){
         string n_base = ft_base(n, num);
 		for (int i = 0 ; i < n_base.length() ; i++){
 			if (index_man == p)
+			{
 				answer.push_back(n_base.at(i));
+				if (answer.length() == t)
+					break;
+			}
 			if (index_man == m)
 				index_man = 0;
 			index_man++;
 		}
 		num++;
-		if (answer.length() == t)
-			break;
     }   
     return answer;
 }
