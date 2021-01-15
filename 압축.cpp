@@ -8,25 +8,27 @@ using namespace std;
 vector<int> solution(string msg) {
     vector<int> answer;
     unordered_map<string, int> arr;
-    char alp;
+    int ind;
     string tmp = "";
-    for (int i = 0 ; i < 26 ; i++)
+    for (ind = 0; ind < 26; ind++)
     {
-        tmp += 'A' + i;
-        arr.emplace(tmp, i);
+        tmp += 'A' + ind;
+        arr.emplace(tmp, ind);
+        tmp = "";
     }
-        
-    for (int i = 0 ; i < msg.length() ; i++){
-        for (int j = i + 1 ; j < msg.length() ; j++){
-            if (arr[msg.substr(i,j)])
-                continue;
-            else
-            {
-                arr.emplace(msg.substr(i, j), msg.size());
-                answer.push_back(msg.find(msg.substr(i,j-1)));
-                i = j - 1;
-            }
+
+    for (int i = 0; i < msg.length(); i++) {
+        tmp = "";
+        int plus = i;
+        tmp += msg[i];
+        while (arr.find(tmp) != arr.end()) {
+            plus++;
+            tmp += msg[plus];
         }
+        i = plus - 1;
+        arr.emplace(tmp, ind++);
+        tmp.pop_back();
+        answer.push_back(arr[tmp] + 1);
     }
     return answer;
 }
