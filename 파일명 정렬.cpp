@@ -37,7 +37,7 @@ vector<string> solution(vector<string> files) {
             }
             if ((files[i][j] >= '0' && files[i][j] <= '9') && !check) {
                 num = num * 10 + (files[i][j] - '0');
-                finish = true; # finish = true가 되도 일단 tail 전에 숫자가 계속 존재하면 else if문으로 넘어가지 않는다.
+                finish = true; // finish = true가 되도 일단 tail 전에 숫자가 계속 존재하면 else if문으로 넘어가지 않는다.
             }
             else if (finish)
                 break;
